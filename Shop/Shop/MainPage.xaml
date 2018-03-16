@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Shop"
+             x:Class="Shop.MainPage">
+
+    <StackLayout Orientation="Vertical">
+        <StackLayout x:Name="Shop" Orientation="Horizontal" BackgroundColor="Gray" HeightRequest="70">
+            <ScrollView Orientation="Horizontal" WidthRequest="500" HeightRequest="50">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" >
+
+                    <Label x:Name="Bags" Text="Bags"  FontSize="20" Margin="0,0,20,0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                         Tapped="TapGestureRecognizer_OnTapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    
+                    <Label x:Name="Accessoires" Text="Accessoires"  FontSize="20" Margin="0,0,20,0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                         Tapped="TapGestureRecognizer_OnTapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    
+                    <Label x:Name="Clothes" Text="Clothes"  FontSize="20" Margin="0,0,20,0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                         Tapped="TapGestureRecognizer_OnTapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+
+                    <Label x:Name="Shoes" Text="Shoes"  FontSize="20" Margin="0,0,20,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                         Tapped="TapGestureRecognizer_OnTapped" />
+                    </Label.GestureRecognizers>
+                        </Label>
+
+
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+        <StackLayout BackgroundColor="White" HeightRequest="30" >
+            <SearchBar Text="Search here" HeightRequest="30" FontSize="10" TextColor="Gray"/>
+    </StackLayout>
+        <Grid Padding="10" VerticalOptions="FillAndExpand">
+            <ListView x:Name="ListShop" SeparatorVisibility="None"  HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="0"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Frame BindingContext="{Binding Item1}" Padding="1" HasShadow="True" OutlineColor="#bbb" >
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="100"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <StackLayout Orientation="Vertical" >
+
+                                            <Label Text="{Binding Type}" VerticalOptions="Start" HorizontalOptions="Center" FontSize="16" LineBreakMode="TailTruncation" 
+                          FontAttributes="Bold"/>
+                                            <Frame BackgroundColor="White" Padding="1" HasShadow="False">
+                                                <Image Source="{Binding Image}"  Aspect="AspectFill" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="80" />
+                                            </Frame>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="1" Padding="5,0,5,5" Spacing="1">
+                                            <Label Text="{Binding Title}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="12" LineBreakMode="TailTruncation" Margin="0,20,0,0" />
+                                            <Label Text="{Binding Price}" FontSize="12"  HorizontalOptions="Center"  VerticalOptions="Center" LineBreakMode="TailTruncation"/>
+                                            <Grid>
+                                                
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                               
+                                            </Grid>
+                                            </StackLayout>
+                                    
+                                    </Grid>
+                                </Frame>
+
+                                <Frame BindingContext="{Binding Item2}" Grid.Column="2" Padding="1"  HasShadow="True" OutlineColor="#bbb">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="100"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <StackLayout Orientation="Vertical">
+                                        <Frame BackgroundColor="White" Padding="1" HasShadow="False">
+                                             <Label Text="{Binding Type}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="16" LineBreakMode="TailTruncation" 
+                            FontAttributes="Bold"/>
+                                        </Frame>
+                                        <StackLayout Grid.Row="1" Padding="5,0,5,5" Spacing="1">
+                                            <Image Source="{Binding Image}" Aspect="AspectFill" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="80"/>
+
+                                                <Label Text="{Binding Title}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="12" LineBreakMode="TailTruncation" Margin="0,15,0,0" />
+                                            <Label Text="{Binding Price}" FontSize="12"  HorizontalOptions="Center"  VerticalOptions="Center" LineBreakMode="TailTruncation"/>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                              
+                                            </Grid>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
+        <StackLayout BackgroundColor="#443E43" VerticalOptions="End" Orientation="Horizontal" WidthRequest="40" HeightRequest="40">
+
+            <Image Source="acc.png" WidthRequest="22" HeightRequest="22" HorizontalOptions="CenterAndExpand"/>
+            <Image Source="Search.png" WidthRequest="18" HeightRequest="18" HorizontalOptions="CenterAndExpand"/>
+            <Image Source="Menu.png" WidthRequest="18" HeightRequest="18" HorizontalOptions="CenterAndExpand"/>
+            <Image Source="Home.png" WidthRequest="12" HeightRequest="12" HorizontalOptions="CenterAndExpand"/>
+            <Image Source="Cartt.png" WidthRequest="20" HeightRequest="20" HorizontalOptions="CenterAndExpand"/>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>
